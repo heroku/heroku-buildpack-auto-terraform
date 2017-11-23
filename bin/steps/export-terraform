@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+EXPORT_PATH="$2/terraform/${TERRAFORM_VERSION}"
+
+# Make terraform et al available to later stages
+cat > export <<EXPORT
+export PATH="${EXPORT_PATH}:\${PATH}"
+EXPORT

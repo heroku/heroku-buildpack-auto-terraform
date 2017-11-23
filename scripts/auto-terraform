@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+export TF_IN_AUTOMATION=true
+
+if [ ! -z "${TERRAFORM_WORKSPACE}" ]; then
+  terraform workspace select "${TERRAFORM_WORKSPACE}"
+fi
+
+exec terraform apply -input=false -auto-approve

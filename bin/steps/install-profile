@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+# Make terraform available on PATH at runtime
+mkdir -p "$1/.profile.d"
+cat > "$1/.profile.d/terraform.sh" <<'PROFILE'
+export PATH="${HOME}/.heroku/terraform/bin:${PATH}"
+
+if [ ! -z "${TERRAFORM_WORKSPACE}" ]; then
+  TF_IN_AUTOMATION=true terraform workspace select "${TERRAFORM_WORKSPACE}"
+fi
+
+if [ ! -z "${TERRAFORM_EXPORT}" ]; then
+  TF_IN_AUTOMATION=true terraform refresh -input=false > /dev/null
+  eval "$(terraform-export)"
+fi
+PROFILE

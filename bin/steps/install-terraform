@@ -1,0 +1,4 @@
+#!/bin/bash -e
+
+mkdir -p "$1/.heroku/terraform/bin"
+cp -a "$2/terraform/${TERRAFORM_VERSION}/terraform" "$1/.heroku/terraform/bin"

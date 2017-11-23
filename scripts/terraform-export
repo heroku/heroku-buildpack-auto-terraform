@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+TF_IN_AUTOMATION=true terraform output | sed -e 's/^/export /' -e 's/ = /=/'

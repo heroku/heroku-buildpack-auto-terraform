@@ -1,0 +1,14 @@
+#!/bin/bash -e 
+
+source bin/steps/default-environment
+source bin/steps/load-environment
+
+bin/steps/download-terraform "$@"
+bin/steps/export-terraform "$@"
+
+source export
+
+bin/steps/install-terraform "$@"
+bin/steps/install-scripts "$@"
+bin/steps/install-profile "$@"
+bin/steps/terraform-init "$@"

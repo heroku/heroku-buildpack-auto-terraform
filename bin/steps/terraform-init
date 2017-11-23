@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+cd "$1"
+
+TF_IN_AUTOMATION=true terraform init

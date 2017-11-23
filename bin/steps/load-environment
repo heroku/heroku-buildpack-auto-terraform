@@ -1,0 +1,7 @@
+# Must be sourced - modifies current process
+
+if [ -d "$3" ]; then
+  for e in $(ls $3); do
+    export "$e=$(< "$3/$e")"
+  done
+fi
